@@ -1,5 +1,6 @@
 package com.example.hackathon.domain.item.service;
 
+import com.example.hackathon.domain.item.dto.ItemRequestDTO;
 import com.example.hackathon.domain.item.dto.ItemResponseDTO;
 import com.example.hackathon.domain.item.entity.Package;
 import com.example.hackathon.domain.item.entity.Sample;
@@ -65,6 +66,28 @@ public class ItemServiceImpl implements ItemService {
             throw new CustomException(ErrorCode.SERVER_ERROR, "[Exception500] ItemServiceImpl packageItemFindAll : " + e.getMessage());
         }
     }
+
+    @Override
+    public ItemResponseDTO.SampleItemSelectAllDTO sampleItemSelectAll(ItemRequestDTO.SampleItemSelectAllDTO sampleItemSelectAllDTO) {
+//        try {
+//            log.info("[ItemServiceImpl] packageItemFindAll");
+//            // PackageItem을 모두 가져옴
+//            List<Package> packageItems = packageRepository.findAll();
+//            // DTO로 변환
+//            List<CartResponseDTO.PackageItemFindOneDTO> packageItemDTOList = packageItems.stream()
+//                    .map(this::mapToPackageItemFindOneDTO)
+//                    .collect(Collectors.toList());
+//            // DTO를 PackageItemFindAllDTO에 설정하여 반환
+//            CartResponseDTO.PackageItemFindAllDTO dto = new CartResponseDTO.PackageItemFindAllDTO();
+//            dto.setPackageList(packageItemDTOList);
+//            return dto;
+//        } catch (Exception e) {
+//            log.error("[Exception500] ItemServiceImpl packageItemFindAll", e);
+//            throw new CustomException(ErrorCode.SERVER_ERROR, "[Exception500] ItemServiceImpl packageItemFindAll : " + e.getMessage());
+//        }
+        return null;
+    }
+
 
     // SampleItem을 DTO로 매핑하는 메서드
     private ItemResponseDTO.SampleItemFindOneDTO mapToSampleItemFindOneDTO(Sample sampleItem) {

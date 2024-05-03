@@ -28,7 +28,7 @@ public class ItemApiController {
         try {
             log.info("[ItemApiController] sampleFindAll");
             String userEmail = getUserEmail();
-            ItemResponseDTO.PackageItemFindAllDTO result = itemService.packageItemFindAll();
+            ItemResponseDTO.SampleItemFindAllDTO result = itemService.sampleItemFindAll();
             return ResponseEntity.ok().body(ApiResponse.SUCCESS(HttpStatus.CREATED.value(), "[SUCCESS] ItemApiController sampleFindAll", result));
         }  catch (Exception500 e) {
             log.info("[Exception500] ItemApiController sampleFindAll");
@@ -42,7 +42,7 @@ public class ItemApiController {
         try {
             log.info("[ItemApiController] packageFindAll");
             String userEmail = getUserEmail();
-            ItemResponseDTO.SampleItemFindAllDTO result = itemService.sampleItemFindAll();
+            ItemResponseDTO.PackageItemFindAllDTO result = itemService.packageItemFindAll();
             return ResponseEntity.ok().body(ApiResponse.SUCCESS(HttpStatus.CREATED.value(), "[SUCCESS] ItemApiController packageFindAll", result));
         }  catch (Exception500 e) {
             log.info("[Exception500] ItemApiController packageFindAll");

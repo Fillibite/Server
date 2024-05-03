@@ -1,4 +1,4 @@
-package com.example.hackathon.domain.item.dto;
+package com.example.hackathon.domain.cart.dto;
 
 import lombok.Data;
 import lombok.Getter;
@@ -7,7 +7,7 @@ import lombok.Setter;
 import java.util.List;
 
 @Data
-public class ItemRequestDTO {
+public class CartRequestDTO {
     @Setter
     @Getter
     public static class SampleItemSelectOneDTO {
@@ -22,6 +22,6 @@ public class ItemRequestDTO {
     @Setter
     @Getter
     public static class SampleItemSelectAllDTO {
-        private List<ItemRequestDTO.SampleItemSelectOneDTO> sampleList;
+        private List<SampleItemSelectOneDTO> sampleList;
     }
 }

@@ -33,6 +33,17 @@ public class ItemResponseDTO {
     }
     @Setter
     @Getter
+    public static class SampleItemSelectOneDTO {
+        private Long id;
+        private String itemName;
+        private int itemPrice;
+        private int itemStock;
+        private float itemStar;
+        private int itemReviewCount;
+        private String itemImg;
+    }
+    @Setter
+    @Getter
     public static class PackageItemFindAllDTO {
         private List<ItemResponseDTO.PackageItemFindOneDTO> packageList;
     }
@@ -40,5 +51,21 @@ public class ItemResponseDTO {
     @Getter
     public static class SampleItemFindAllDTO {
         private List<ItemResponseDTO.SampleItemFindOneDTO> sampleList;
+    }
+
+    @Setter
+    @Getter
+    public static class PackageItemTop3FindAllDTO {
+        private List<ItemResponseDTO.PackageItemFindOneDTO> packageList;
+    }
+    @Setter
+    @Getter
+    public static class SampleItemTop3FindAllDTO {
+        private List<ItemResponseDTO.SampleItemFindOneDTO> sampleList;
+    }
+    @Setter
+    @Getter
+    public static class SampleItemSelectAllDTO {
+        private List<ItemRequestDTO.SampleItemSelectOneDTO> sampleList;
     }
 }
