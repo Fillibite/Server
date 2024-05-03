@@ -1,6 +1,5 @@
 package com.example.hackathon.global.auth.config;
 
-import com.example.hackathon.domain.token.repository.RefreshTokenRepository;
 import com.example.hackathon.domain.token.service.TokenServiceImpl;
 import com.example.hackathon.domain.user.repository.UserRepository;
 import com.example.hackathon.global.auth.jwt.filter.JwtAuthenticationFilter;
@@ -29,7 +28,6 @@ import org.springframework.security.web.authentication.logout.LogoutSuccessHandl
 public class SecurityConfig {
     private final CorsConfig corsConfig;
     private final UserRepository userRepository;
-    private final RefreshTokenRepository tokenRepository;
     private final TokenServiceImpl tokenService;
     @Value(("${jwt.secret}"))
     private String secretKey;
@@ -63,7 +61,7 @@ public class SecurityConfig {
                 .httpBasic(basic -> basic
                         .disable() // basic 방식은 id와 pw를 보내기 떄문에 노출이 될 가능성이 크다. 그래서 bearer token 방법을 쓴다.
                 )
-                .addFilter(new JwtAuthenticationFilter(authenticationManager, tokenRepository, secretKey))
+                .addFilter(new JwtAuthenticationFilter(authenticationManager, secretKey))
                 .addFilter(new JwtAuthorizationFilter(authenticationManager, userRepository, tokenService, secretKey))
                 .authorizeRequests(authorize -> authorize
                                 .requestMatchers("/swagger/index.html").permitAll()

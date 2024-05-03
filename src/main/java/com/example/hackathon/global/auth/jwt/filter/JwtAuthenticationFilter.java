@@ -1,6 +1,5 @@
 package com.example.hackathon.global.auth.jwt.filter;
 
-import com.example.hackathon.domain.token.repository.RefreshTokenRepository;
 import com.example.hackathon.domain.user.entity.User;
 import com.example.hackathon.global.auth.PrincipalDetails;
 import com.example.hackathon.global.auth.jwt.util.JwtUtil;
@@ -22,7 +21,6 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private final AuthenticationManager authenticationManager;
-    private final RefreshTokenRepository tokenRepository;
     private final String secretKey;
 
     @Override
@@ -47,6 +45,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
         log.info("Login 성공!");
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
-        JwtUtil.generateAndSendToken(response, principalDetails, tokenRepository, secretKey);
+        JwtUtil.generateAndSendToken(response, principalDetails, secretKey);
     }
 }

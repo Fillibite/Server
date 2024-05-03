@@ -1,7 +1,5 @@
 package com.example.hackathon.global.common;
 
-import com.example.hackathon.domain.token.entity.RefreshToken;
-import com.example.hackathon.domain.token.repository.RefreshTokenRepository;
 import com.example.hackathon.domain.user.entity.User;
 import com.example.hackathon.domain.user.repository.UserRepository;
 import com.example.hackathon.global.common.exception.CustomException;
@@ -19,7 +17,7 @@ import java.util.Optional;
 @Slf4j
 public class CommonMethod {
     private final UserRepository userRepository;
-    private final RefreshTokenRepository refreshTokenRepository;
+//    private final RefreshTokenRepository refreshTokenRepository;
 //    private final ChatRoomRepository chatRoomRepository;
 //    private final ChatRoomRelationRepository chatRoomRelationRepository;
 //    private final MessageRepository messageRepository;
@@ -41,14 +39,14 @@ public class CommonMethod {
         return findUser.get();
     }
 //
-    /** Refresh Method **/
-    public RefreshToken getRefreshToken(String refreshToken) throws CustomException {
-        Optional<RefreshToken> findRefreshToken = refreshTokenRepository.findById(refreshToken);
-        if(!findRefreshToken.isPresent()) {
-            throw new CustomException(ErrorCode.REFRESH_NOT_FOUND);
-        }
-        return findRefreshToken.get();
-    }
+//    /** Refresh Method **/
+//    public RefreshToken getRefreshToken(String refreshToken) throws CustomException {
+//        Optional<RefreshToken> findRefreshToken = refreshTokenRepository.findById(refreshToken);
+//        if(!findRefreshToken.isPresent()) {
+//            throw new CustomException(ErrorCode.REFRESH_NOT_FOUND);
+//        }
+//        return findRefreshToken.get();
+//    }
 //
 //    /** Message Method **/
 //    public Message getMessage_Id(Long messageId) throws CustomException {

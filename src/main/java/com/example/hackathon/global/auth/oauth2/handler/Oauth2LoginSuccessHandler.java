@@ -1,6 +1,5 @@
 package com.example.hackathon.global.auth.oauth2.handler;
 
-import com.example.hackathon.domain.token.repository.RefreshTokenRepository;
 import com.example.hackathon.global.auth.PrincipalDetails;
 import com.example.hackathon.global.auth.jwt.util.JwtUtil;
 import jakarta.servlet.ServletException;
@@ -21,11 +20,10 @@ import java.io.IOException;
 public class Oauth2LoginSuccessHandler implements AuthenticationSuccessHandler {
     @Value(("${jwt.secret}"))
     private String secretKey;
-    private final RefreshTokenRepository tokenRepository;
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         log.info("OAuth2 Login 성공!");
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
-        JwtUtil.generateAndSendToken(response, principalDetails, tokenRepository, secretKey);
+        JwtUtil.generateAndSendToken(response, principalDetails, secretKey);
     }
 }

@@ -24,6 +24,12 @@ public class User extends BaseEntity {
     private String userName;
     private String userAddress;
 
+    public User(String userEmail, String userPassword, String userName) {
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
+        this.userName = userName;
+    }
+
     public List<String> getRoleList() {
         if (this.role.length() > 0) {
             return Arrays.asList(this.role.split(","));

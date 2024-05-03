@@ -2,8 +2,6 @@ package com.example.hackathon.global.auth.jwt.util;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.example.hackathon.domain.token.entity.RefreshToken;
-import com.example.hackathon.domain.token.repository.RefreshTokenRepository;
 import com.example.hackathon.global.auth.PrincipalDetails;
 import com.example.hackathon.global.auth.jwt.JwtProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,16 +16,16 @@ import java.util.Map;
 @Slf4j
 public class JwtUtil {
 
-    public static void generateAndSendToken(HttpServletResponse response, PrincipalDetails principalDetails, RefreshTokenRepository tokenRepository, String secretKey) throws IOException {
+    public static void generateAndSendToken(HttpServletResponse response, PrincipalDetails principalDetails, String secretKey) throws IOException {
         String accessToken = createToken("accessToken", JwtProperties.ACCESS_EXPIRATION_TIME, principalDetails, secretKey);
-        String refreshToken = createToken("refreshToken", JwtProperties.REFRESH_EXPIRATION_TIME, principalDetails, secretKey);
+//        String refreshToken = createToken("refreshToken", JwtProperties.REFRESH_EXPIRATION_TIME, principalDetails, secretKey);
 
         response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + accessToken);
-        tokenRepository.save(new RefreshToken(refreshToken, principalDetails.getUser().getId()));
+//        tokenRepository.save(new RefreshToken(refreshToken, principalDetails.getUser().getId()));
 
         Map<String, String> tokenMap = new HashMap<>();
         tokenMap.put("accessToken", accessToken);
-        tokenMap.put("refreshToken", refreshToken);
+//        tokenMap.put("refreshToken", refreshToken);
         response.setContentType("application/json");
 
 //        log.info("Access Token : " + accessToken);
