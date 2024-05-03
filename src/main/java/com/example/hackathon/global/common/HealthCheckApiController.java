@@ -1,4 +1,4 @@
-package com.example.hackathon.base;
+package com.example.hackathon.global.common;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class HealthCheckApiController {
     @GetMapping
     public ResponseEntity<?> healthcheck() {
-        return ResponseEntity.ok().body("202405040017 healthCheck 완료.");
+        return ResponseEntity.ok().body("202405011721 healthCheck 완료.");
     }
 }
