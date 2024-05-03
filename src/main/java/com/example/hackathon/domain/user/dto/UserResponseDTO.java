@@ -21,4 +21,9 @@ public class UserResponseDTO {
             this.userName = user.getUserName();
         }
     }
+    @Setter
+    @Getter
+    public static class UserLoginDTO {
+        private String accessToken;
+    }
 }
