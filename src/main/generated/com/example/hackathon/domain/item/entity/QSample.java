@@ -25,13 +25,22 @@ public class QSample extends EntityPathBase<Sample> {
     public final NumberPath<Long> id = _super.id;
 
     //inherited
-    public final StringPath name = _super.name;
+    public final StringPath itemImg = _super.itemImg;
 
     //inherited
-    public final NumberPath<Long> price = _super.price;
+    public final StringPath itemName = _super.itemName;
 
     //inherited
-    public final NumberPath<Long> stock = _super.stock;
+    public final NumberPath<Integer> itemPrice = _super.itemPrice;
+
+    //inherited
+    public final NumberPath<Integer> itemReviewCount = _super.itemReviewCount;
+
+    //inherited
+    public final NumberPath<Float> itemStar = _super.itemStar;
+
+    //inherited
+    public final NumberPath<Integer> itemStock = _super.itemStock;
 
     public QSample(String variable) {
         super(Sample.class, forVariable(variable));

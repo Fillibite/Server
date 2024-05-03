@@ -34,17 +34,17 @@ public class UserApiController {
         }
     }
 
-    // 로그인
-    @PostMapping("/login/oauth2/code/kakao/{provider}")
-    public ResponseEntity<?> login(@RequestBody UserRequestDTO.UserLoginDTO userLoginDTO) {
-        try {
-            log.info("[UserApiController] join");
-            UserResponseDTO.UserLoginDTO result = new UserResponseDTO.UserLoginDTO();
-            result.setAccessToken(userLoginDTO.getAccessToken());
-            return ResponseEntity.ok().body(ApiResponse.SUCCESS(HttpStatus.CREATED.value(), "[SUCCESS] UserApiController join", result));
-        }  catch (Exception500 e) {
-            log.info("[Exception500] UserApiController join");
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ApiResponse.ERROR(e.status().value(), e.getMessage()));
-        }
-    }
+//    // 로그인
+//    @PostMapping("/login/oauth2/code/kakao/{provider}")
+//    public ResponseEntity<?> login(@RequestBody UserRequestDTO.UserLoginDTO userLoginDTO) {
+//        try {
+//            log.info("[UserApiController] join");
+//            UserResponseDTO.UserLoginDTO result = new UserResponseDTO.UserLoginDTO();
+//            result.setAccessToken(userLoginDTO.getAccessToken());
+//            return ResponseEntity.ok().body(ApiResponse.SUCCESS(HttpStatus.CREATED.value(), "[SUCCESS] UserApiController join", result));
+//        }  catch (Exception500 e) {
+//            log.info("[Exception500] UserApiController join");
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ApiResponse.ERROR(e.status().value(), e.getMessage()));
+//        }
+//    }
 }
