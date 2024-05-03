@@ -14,6 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class HealthCheckApiController {
     @GetMapping
     public ResponseEntity<?> healthcheck() {
-        return ResponseEntity.ok().body("202405040002 healthCheck 완료.");
+        return ResponseEntity.ok().body("202405040015 healthCheck 완료.");
     }
 }
