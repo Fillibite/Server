@@ -20,16 +20,16 @@ public class QOrder extends EntityPathBase<Order> {
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
-    public static final QOrder order1 = new QOrder("order1");
+    public static final QOrder order = new QOrder("order1");
 
     public final com.example.hackathon.global.common.QBaseEntity _super = new com.example.hackathon.global.common.QBaseEntity(this);
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdTime = _super.createdTime;
 
-    public final NumberPath<Long> id = createNumber("id", Long.class);
+    public final com.example.hackathon.domain.delivery.entity.QDelivery delivery;
 
-    public final QOrder order;
+    public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final EnumPath<OrderStatus> orderStatus = createEnum("orderStatus", OrderStatus.class);
 
@@ -56,7 +56,7 @@ public class QOrder extends EntityPathBase<Order> {
 
     public QOrder(Class<? extends Order> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.order = inits.isInitialized("order") ? new QOrder(forProperty("order"), inits.get("order")) : null;
+        this.delivery = inits.isInitialized("delivery") ? new com.example.hackathon.domain.delivery.entity.QDelivery(forProperty("delivery")) : null;
         this.user = inits.isInitialized("user") ? new com.example.hackathon.domain.user.entity.QUser(forProperty("user")) : null;
     }
 
