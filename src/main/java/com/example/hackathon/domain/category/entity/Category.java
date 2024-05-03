@@ -15,12 +15,4 @@ public class Category {
     @Id @GeneratedValue
     @Column(name = "category_id")
     private Long id;
-
-    public Category(Long id) {
-        this.id = id;
-    }
-
-    public Category() {
-
-    }
 }

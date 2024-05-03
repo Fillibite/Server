@@ -7,10 +7,11 @@ import lombok.Getter;
 
 @Entity
 @Getter
+@Table(name = "orders")
 public class Order extends BaseEntity {
     @Id
     @GeneratedValue
-    @Column(name = "order_id")
+    @Column(name = "orders_id")
     private Long id;
 
     @Enumerated(value = EnumType.STRING)

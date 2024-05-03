@@ -15,7 +15,7 @@ import lombok.*;
 @AllArgsConstructor // 모든 필드를 가진 생성자 생성
 public class OrderItem {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment (기본키)
+    @GeneratedValue
     private Long id;
 
     @Column
@@ -25,12 +25,12 @@ public class OrderItem {
     private Long count;
 
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "itemId", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "item_id")
     private Item item;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "orderId", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "orders_id")
     private Order order;
 
 }

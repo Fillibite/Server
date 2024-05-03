@@ -36,12 +36,22 @@ public class User extends BaseEntity {
 
     }
 
-    public User(Long id, String role, String userEmail, String userPassword, String userName) {
+    public User(Long id, String role, String userEmail, String userPassword, String userName, String userAddress) {
         this.id = id;
         this.role = role;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
         this.userName = userName;
+        this.userAddress = userAddress;
     }
 
+    public User(BaseEntityBuilder<?, ?> b, Long id, String role, String userEmail, String userPassword, String userName, String userAddress) {
+        super(b);
+        this.id = id;
+        this.role = role;
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
+        this.userName = userName;
+        this.userAddress = userAddress;
+    }
 }
