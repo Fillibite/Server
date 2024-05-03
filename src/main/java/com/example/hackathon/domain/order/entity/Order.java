@@ -1,10 +1,8 @@
 package com.example.hackathon.domain.order.entity;
 
+import com.example.hackathon.domain.user.entity.User;
 import com.example.hackathon.global.common.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 
 @Entity
@@ -15,4 +13,14 @@ public class Order extends BaseEntity {
     @Column(name = "order_id")
     private Long id;
 
+    @Enumerated(value = EnumType.STRING)
+    private OrderStatus orderStatus;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "delivery_id")
+    private Order order;
 }

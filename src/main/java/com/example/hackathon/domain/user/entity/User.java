@@ -22,6 +22,7 @@ public class User extends BaseEntity {
     private String userEmail;
     private String userPassword;
     private String userName;
+    private String userAddress;
 
     public List<String> getRoleList() {
         if (this.role.length() > 0) {

@@ -14,5 +14,5 @@ public class Delivery extends BaseEntity {
     @GeneratedValue
     @Column(name = "delivery_id")
     private Long id;
-
+    private DeliveryStatus deliveryStatus;
 }
