@@ -16,7 +16,7 @@ import java.util.Map;
 @Slf4j
 public class JwtUtil {
 
-    public static void generateAndSendToken(HttpServletResponse response, PrincipalDetails principalDetails, String secretKey) throws IOException {
+    public static void generateToken(HttpServletResponse response, PrincipalDetails principalDetails, String secretKey) throws IOException {
         String accessToken = createToken("accessToken", JwtProperties.ACCESS_EXPIRATION_TIME, principalDetails, secretKey);
 //        String refreshToken = createToken("refreshToken", JwtProperties.REFRESH_EXPIRATION_TIME, principalDetails, secretKey);
 

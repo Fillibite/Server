@@ -45,6 +45,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
         log.info("Login 성공!");
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
-        JwtUtil.generateAndSendToken(response, principalDetails, secretKey);
+        JwtUtil.generateToken(response, principalDetails, secretKey);
     }
 }

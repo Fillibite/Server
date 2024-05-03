@@ -20,10 +20,11 @@ import java.io.IOException;
 public class Oauth2LoginSuccessHandler implements AuthenticationSuccessHandler {
     @Value(("${jwt.secret}"))
     private String secretKey;
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         log.info("OAuth2 Login 성공!");
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
-        JwtUtil.generateAndSendToken(response, principalDetails, secretKey);
+        JwtUtil.generateToken(response, principalDetails, secretKey);
     }
 }
