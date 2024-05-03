@@ -21,11 +21,17 @@ public class QItem extends EntityPathBase<Item> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final StringPath name = createString("name");
+    public final StringPath itemImg = createString("itemImg");
 
-    public final NumberPath<Long> price = createNumber("price", Long.class);
+    public final StringPath itemName = createString("itemName");
 
-    public final NumberPath<Long> stock = createNumber("stock", Long.class);
+    public final NumberPath<Integer> itemPrice = createNumber("itemPrice", Integer.class);
+
+    public final NumberPath<Integer> itemReviewCount = createNumber("itemReviewCount", Integer.class);
+
+    public final NumberPath<Float> itemStar = createNumber("itemStar", Float.class);
+
+    public final NumberPath<Integer> itemStock = createNumber("itemStock", Integer.class);
 
     public QItem(String variable) {
         super(Item.class, forVariable(variable));

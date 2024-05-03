@@ -6,14 +6,15 @@ import lombok.Setter;
 
 @Entity
 @Getter
-@Setter
 public class Item {
     @Id
     @GeneratedValue
     @Column(name = "item_id")
     private Long id;
-
-    private String name;
-    private Long price;
-    private Long stock;
+    private String itemName;
+    private int itemPrice;
+    private int itemStock = 999;
+    private float itemStar = 0;
+    private int itemReviewCount = 0;
+    private String itemImg = "img";
 }
