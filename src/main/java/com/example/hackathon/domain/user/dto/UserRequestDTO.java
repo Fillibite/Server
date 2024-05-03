@@ -17,4 +17,9 @@ public class UserRequestDTO {
             return new User(this.userEmail, this.userPassword, this.userName);
         }
     }
+    @Setter
+    @Getter
+    public static class UserLoginDTO {
+        private String accessToken;
+    }
 }
