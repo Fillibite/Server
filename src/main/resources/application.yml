@@ -1,9 +1,5 @@
 jwt:
   secret: hello.world.ee.ff
-  redis:
-    #    host: redis
-    host: localhost
-    port: 6379
 
 ---
 server:
@@ -29,6 +25,29 @@ spring:
         format_sql: true
         use_sql_comments: true
   #        default_batch_fetch_size: 100
+
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-id: 2a6c30c57fcff13e6306275b767605ad # 앱 설정 -> 앱 키 -> REST API 키
+            client-secret: zGY6j5gJgFCvQNe985qlbHk6Sq9VKu6j # 제품 설정 -> 카카오 로그인 -> 보안 -> Client Secret
+            #            redirect-uri: http://3.38.185.5:8080/login/oauth2/code/kakao
+            redirect-uri: http://localhost:8080/login/oauth2/code/kakao
+            authorization-grant-type: authorization_code
+            client-authentication-method: client_secret_post
+            client-name: Kakao
+            scope:
+              - profile_nickname
+              - account_email
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id
+
 
 ---
 logging.level:

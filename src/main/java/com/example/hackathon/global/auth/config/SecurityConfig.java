@@ -77,13 +77,13 @@ public class SecurityConfig {
 //                        .anyRequest().permitAll()
                 )
 
-//                /** Oauth2 로그인 구현 **/
-//                .oauth2Login(login -> login
-//                        .successHandler(oauth2LoginSuccessHandler)
-//                        .failureHandler(oauth2LoginFailureHandler)
-//                        .userInfoEndpoint(userInfoEndpointConfig -> userInfoEndpointConfig
-//                                .userService(principalOauth2UserService))
-//                )
+                /** Oauth2 로그인 구현 **/
+                .oauth2Login(login -> login
+                        .successHandler(oauth2LoginSuccessHandler)
+                        .failureHandler(oauth2LoginFailureHandler)
+                        .userInfoEndpoint(userInfoEndpointConfig -> userInfoEndpointConfig
+                                .userService(principalOauth2UserService))
+                )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessHandler(logoutSuccessHandler)
