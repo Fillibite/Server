@@ -1,5 +1,6 @@
 package com.example.hackathon.domain.order.entity;
 
+import com.example.hackathon.domain.delivery.entity.Delivery;
 import com.example.hackathon.domain.user.entity.User;
 import com.example.hackathon.global.common.BaseEntity;
 import jakarta.persistence.*;
@@ -23,5 +24,5 @@ public class Order extends BaseEntity {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "delivery_id")
-    private Order order;
+    private Delivery delivery;
 }
