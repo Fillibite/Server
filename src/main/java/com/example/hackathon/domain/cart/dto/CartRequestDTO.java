@@ -1,5 +1,6 @@
 package com.example.hackathon.domain.cart.dto;
 
+import com.example.hackathon.domain.cart.entity.Cart;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,18 +11,16 @@ import java.util.List;
 public class CartRequestDTO {
     @Setter
     @Getter
-    public static class SampleItemSelectOneDTO {
-        private Long id;
+    public static class CartSelectOneDTO {
         private String itemName;
-        private int itemPrice;
-        private int itemStock;
-        private float itemStar;
-        private int itemReviewCount;
         private String itemImg;
+        private int itemPrice;
+        private int count;
+        private int totalPrice;
     }
     @Setter
     @Getter
-    public static class SampleItemSelectAllDTO {
-        private List<SampleItemSelectOneDTO> sampleList;
+    public static class CartSelectAllDTO {
+        private List<CartSelectOneDTO> cartSelectList;
     }
 }

@@ -23,4 +23,14 @@ public class Cart {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+    public void setCart(int count, int totalPrice, Item item, User user) {
+        this.count = count;
+        this.totalPrice = totalPrice;
+        this.item = item;
+        this.user = user;
+    }
+    public Cart() {
+
+    }
 }
