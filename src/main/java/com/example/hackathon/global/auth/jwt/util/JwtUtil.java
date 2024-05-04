@@ -34,6 +34,30 @@ public class JwtUtil {
         new ObjectMapper().writeValue(response.getOutputStream(), tokenMap);
     }
 
+//    public static void authgenerateOauth2Token(HttpServletResponse response, PrincipalDetails principalDetails, String secretKey) throws IOException {
+//        String accessToken = createToken("accessToken", JwtProperties.REFRESH_EXPIRATION_TIME, principalDetails, secretKey);
+////        String refreshToken = createToken("refreshToken", JwtProperties.REFRESH_EXPIRATION_TIME, principalDetails, secretKey);
+//
+//        response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + accessToken);
+////        tokenRepository.save(new RefreshToken(refreshToken, principalDetails.getUser().getId()));
+//
+//        Map<String, String> tokenMap = new HashMap<>();
+//        tokenMap.put("accessToken", accessToken);
+////        tokenMap.put("refreshToken", refreshToken);
+//        response.setContentType("application/json");
+//
+////        log.info("Access Token : " + accessToken);
+////        log.info("Refresh Token : " + refreshToken);
+//
+//        new ObjectMapper().writeValue(response.getOutputStream(), tokenMap);
+//
+//        String redirectUrl = UriComponentsBuilder.fromUriString(URI)
+//                .queryParam("accessToken", accessToken)
+//                .build().toUriString();
+//
+//        response.sendRedirect(redirectUrl);
+//    }
+
     private static String createToken(String type, long expirationTime, PrincipalDetails principalDetails, String secretKey) {
         String token = JWT.create()
                 .withSubject(type)  // subject 변경

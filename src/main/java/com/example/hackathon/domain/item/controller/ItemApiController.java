@@ -67,7 +67,7 @@ public class ItemApiController {
 
 
     // 검색 아이템 조회
-    @GetMapping("/search")
+    @PostMapping("/search")
     public ResponseEntity<?> search(@RequestBody ItemRequestDTO.ItemSearchDTO itemSearchDTO) {
         try {
             log.info("[CartApiController] findOne");
