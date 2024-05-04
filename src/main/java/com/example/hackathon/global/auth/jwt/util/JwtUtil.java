@@ -17,7 +17,7 @@ import java.util.Map;
 public class JwtUtil {
 
     public static void generateToken(HttpServletResponse response, PrincipalDetails principalDetails, String secretKey) throws IOException {
-        String accessToken = createToken("accessToken", JwtProperties.ACCESS_EXPIRATION_TIME, principalDetails, secretKey);
+        String accessToken = createToken("accessToken", JwtProperties.REFRESH_EXPIRATION_TIME, principalDetails, secretKey);
 //        String refreshToken = createToken("refreshToken", JwtProperties.REFRESH_EXPIRATION_TIME, principalDetails, secretKey);
 
         response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX + accessToken);
