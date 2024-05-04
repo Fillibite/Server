@@ -78,13 +78,13 @@ public class SecurityConfig {
 //                        .anyRequest().permitAll()
                 )
 
-                /** Oauth2 로그인 구현 **/
-                .oauth2Login(login -> login
-                        .successHandler(oauth2LoginSuccessHandler)
-                        .failureHandler(oauth2LoginFailureHandler)
-                        .userInfoEndpoint(userInfoEndpointConfig -> userInfoEndpointConfig
-                                .userService(principalOauth2UserService))
-                )
+//                /** Oauth2 로그인 구현 **/
+//                .oauth2Login(login -> login
+//                        .successHandler(oauth2LoginSuccessHandler)
+//                        .failureHandler(oauth2LoginFailureHandler)
+//                        .userInfoEndpoint(userInfoEndpointConfig -> userInfoEndpointConfig
+//                                .userService(principalOauth2UserService))
+//                )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessHandler(logoutSuccessHandler)
@@ -92,24 +92,4 @@ public class SecurityConfig {
                 )
                 .build();
     }
-//    @Bean
-//    public CorsConfigurationSource corsConfigurationSource() {
-//        CorsConfiguration configuration = new CorsConfiguration();
-//
-//        configuration.setAllowedOrigins(
-//                List.of("http://localhost:8080")
-//        );
-//
-//        configuration.setAllowedMethods(
-//                List.of("GET", "POST", "PUT", "PATCH", "DELETE")
-//        );
-//
-//        configuration.addAllowedHeader("*"); // 모든 헤더 허용
-//        configuration.setAllowCredentials(true);
-//
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", configuration);
-//
-//        return source;
-//    }
 }
