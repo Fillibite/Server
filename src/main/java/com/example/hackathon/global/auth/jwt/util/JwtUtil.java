@@ -7,6 +7,7 @@ import com.example.hackathon.global.auth.jwt.JwtProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
 import java.util.Date;
@@ -34,7 +35,7 @@ public class JwtUtil {
         new ObjectMapper().writeValue(response.getOutputStream(), tokenMap);
     }
 
-//    public static void authgenerateOauth2Token(HttpServletResponse response, PrincipalDetails principalDetails, String secretKey) throws IOException {
+//    public static void generateOauth2Token(HttpServletResponse response, PrincipalDetails principalDetails, String secretKey) throws IOException {
 //        String accessToken = createToken("accessToken", JwtProperties.REFRESH_EXPIRATION_TIME, principalDetails, secretKey);
 ////        String refreshToken = createToken("refreshToken", JwtProperties.REFRESH_EXPIRATION_TIME, principalDetails, secretKey);
 //
@@ -49,9 +50,10 @@ public class JwtUtil {
 ////        log.info("Access Token : " + accessToken);
 ////        log.info("Refresh Token : " + refreshToken);
 //
+//        System.out.println("------------1");
 //        new ObjectMapper().writeValue(response.getOutputStream(), tokenMap);
-//
-//        String redirectUrl = UriComponentsBuilder.fromUriString(URI)
+//        System.out.println("------------2");
+//        String redirectUrl = UriComponentsBuilder.fromUriString("/auth/success")
 //                .queryParam("accessToken", accessToken)
 //                .build().toUriString();
 //
