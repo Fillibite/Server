@@ -24,4 +24,10 @@ public class ItemRequestDTO {
     public static class SampleItemSelectAllDTO {
         private List<ItemRequestDTO.SampleItemSelectOneDTO> sampleList;
     }
+
+    @Setter
+    @Getter
+    public static class ItemSearchDTO {
+        private String searchKeyWord;
+    }
 }

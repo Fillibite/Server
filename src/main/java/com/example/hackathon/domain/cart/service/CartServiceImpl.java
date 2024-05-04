@@ -60,19 +60,22 @@ public class CartServiceImpl implements CartService {
             for(int i=0; i<cartSelectAllDTO.getCartSelectList().size(); i++) {
                 CartRequestDTO.CartSelectOneDTO cartSelectOneDTO = new CartRequestDTO.CartSelectOneDTO();
                 Cart cart = new Cart();
-                Optional<Item> optionalItem = itemRepository.findById(cartSelectOneDTO.getId());
+                Optional<Item> optionalItem = itemRepository.findById(cartSelectAllDTO.getCartSelectList().get(i).getId());
                 if(!optionalItem.isPresent()) {
                     throw new CustomException(ErrorCode.ITEM_NOT_FOUND);
                 }
-                cart.setCart(cartSelectOneDTO.getCount(), cartSelectOneDTO.getTotalPrice(), optionalItem.get(), findUser);
-                cartRepository.save(cart);
-                CartResponseDTO.CartSelectOneDTO responseOne = new CartResponseDTO.CartSelectOneDTO(cart);
+                cart.setCart(cartSelectAllDTO.getCartSelectList().get(i).getCount(), cartSelectAllDTO.getCartSelectList().get(i).getTotalPrice(), optionalItem.get(), findUser);
+                Cart saveCart = cartRepository.save(cart);
+                CartResponseDTO.CartSelectOneDTO responseOne = new CartResponseDTO.CartSelectOneDTO(saveCart);
                 cartFindOneDTOS.add(responseOne);
             }
             result.setCartSelectList(cartFindOneDTOS);
             return result;
-        } catch (Exception e) {
-            log.error("[Exception500] CartServiceImpl cartSelectAll", e);
+        } catch (CustomException ce){
+            log.info("[CustomException] CartServiceImpl cartSelectAll");
+            throw ce;
+        } catch (Exception e){
+            log.info("[Exception500] CartServiceImpl cartSelectAll");
             throw new CustomException(ErrorCode.SERVER_ERROR, "[Exception500] CartServiceImpl cartSelectAll : " + e.getMessage());
         }
     }

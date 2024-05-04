@@ -8,5 +8,5 @@ public interface ItemService {
     ItemResponseDTO.SampleItemFindAllDTO sampleItemFindAll();
     ItemResponseDTO.PackageItemFindAllDTO packageItemFindAll();
     ItemResponseDTO.SampleItemSelectAllDTO sampleItemSelectAll(ItemRequestDTO.SampleItemSelectAllDTO sampleItemSelectAllDTO);
-
+    ItemResponseDTO.ItemSearch searchKeyWord(ItemRequestDTO.ItemSearchDTO itemSearchDTO);
 }

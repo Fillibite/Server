@@ -95,4 +95,10 @@ public class ItemResponseDTO {
             this.itemType = item.getItemType();
         }
     }
+
+    @Setter
+    @Getter
+    public static class ItemSearch {
+        private List<ItemResponseDTO.ItemFindOneDTO> searchList;
+    }
 }

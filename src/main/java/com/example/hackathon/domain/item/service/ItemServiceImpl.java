@@ -35,8 +35,11 @@ public class ItemServiceImpl implements ItemService {
             }
             return new ItemResponseDTO.ItemFindOneDTO(findItem.get());
 
-        } catch (Exception e) {
-            log.error("[Exception500] ItemServiceImpl findOne", e);
+        } catch (CustomException ce){
+            log.info("[CustomException] ItemServiceImpl findOne");
+            throw ce;
+        } catch (Exception e){
+            log.info("[Exception500] ItemServiceImpl findOne");
             throw new CustomException(ErrorCode.SERVER_ERROR, "[Exception500] ItemServiceImpl findOne : " + e.getMessage());
         }
     }
@@ -55,8 +58,11 @@ public class ItemServiceImpl implements ItemService {
             ItemResponseDTO.SampleItemFindAllDTO dto = new ItemResponseDTO.SampleItemFindAllDTO();
             dto.setSampleList(sampleItemDTOList);
             return dto;
-        } catch (Exception e) {
-            log.error("[Exception500] ItemServiceImpl sampleItemFindAll", e);
+        } catch (CustomException ce){
+            log.info("[CustomException] ItemServiceImpl sampleItemFindAll");
+            throw ce;
+        } catch (Exception e){
+            log.info("[Exception500] ItemServiceImpl sampleItemFindAll");
             throw new CustomException(ErrorCode.SERVER_ERROR, "[Exception500] ItemServiceImpl sampleItemFindAll : " + e.getMessage());
         }
     }
@@ -75,8 +81,11 @@ public class ItemServiceImpl implements ItemService {
             ItemResponseDTO.PackageItemFindAllDTO dto = new ItemResponseDTO.PackageItemFindAllDTO();
             dto.setPackageList(packageItemDTOList);
             return dto;
-        } catch (Exception e) {
-            log.error("[Exception500] ItemServiceImpl packageItemFindAll", e);
+        } catch (CustomException ce){
+            log.info("[CustomException] ItemServiceImpl packageItemFindAll");
+            throw ce;
+        } catch (Exception e){
+            log.info("[Exception500] ItemServiceImpl packageItemFindAll");
             throw new CustomException(ErrorCode.SERVER_ERROR, "[Exception500] ItemServiceImpl packageItemFindAll : " + e.getMessage());
         }
     }
@@ -102,6 +111,30 @@ public class ItemServiceImpl implements ItemService {
         return null;
     }
 
+    @Override
+    public ItemResponseDTO.ItemSearch searchKeyWord(ItemRequestDTO.ItemSearchDTO itemSearchDTO) {
+        try {
+            log.info("[ItemServiceImpl] searchKeyWord");
+            String searchKeyWord = itemSearchDTO.getSearchKeyWord();
+            List<Item> result = itemRepository.findByItemNameContaining(searchKeyWord);
+
+            List<ItemResponseDTO.ItemFindOneDTO> searchResult = result.stream()
+                    .map(ItemResponseDTO.ItemFindOneDTO::new)
+                    .collect(Collectors.toList());
+
+            ItemResponseDTO.ItemSearch itemSearch = new ItemResponseDTO.ItemSearch();
+            itemSearch.setSearchList(searchResult);
+
+            return itemSearch;
+
+        } catch (CustomException ce) {
+            log.info("[CustomException] ItemServiceImpl searchKeyWord");
+            throw ce;
+        } catch (Exception e) {
+            log.info("[Exception500] ItemServiceImpl searchKeyWord");
+            throw new CustomException(ErrorCode.SERVER_ERROR, "[Exception500] ItemServiceImpl searchKeyWord : " + e.getMessage());
+        }
+    }
 
     // SampleItem을 DTO로 매핑하는 메서드
     private ItemResponseDTO.SampleItemFindOneDTO mapToSampleItemFindOneDTO(Item sampleItem) {
