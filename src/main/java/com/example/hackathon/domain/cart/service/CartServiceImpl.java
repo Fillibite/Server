@@ -60,7 +60,7 @@ public class CartServiceImpl implements CartService {
             for(int i=0; i<cartSelectAllDTO.getCartSelectList().size(); i++) {
                 CartRequestDTO.CartSelectOneDTO cartSelectOneDTO = new CartRequestDTO.CartSelectOneDTO();
                 Cart cart = new Cart();
-                Optional<Item> optionalItem = itemRepository.findByItemName(cartSelectOneDTO.getItemName());
+                Optional<Item> optionalItem = itemRepository.findById(cartSelectOneDTO.getId());
                 if(!optionalItem.isPresent()) {
                     throw new CustomException(ErrorCode.ITEM_NOT_FOUND);
                 }
