@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,6 +24,22 @@ import java.util.stream.Collectors;
 public class ItemServiceImpl implements ItemService {
     private final ItemRepository itemRepository;
     private final CommonMethod commonMethod;
+
+    @Override
+    public ItemResponseDTO.ItemFindOneDTO findOne(Long itemId) {
+        try {
+            log.info("[ItemServiceImpl] findOne");
+            Optional<Item> findItem = itemRepository.findById(itemId);
+            if(!findItem.isPresent()) {
+                throw new CustomException(ErrorCode.ITEM_NOT_FOUND);
+            }
+            return new ItemResponseDTO.ItemFindOneDTO(findItem.get());
+
+        } catch (Exception e) {
+            log.error("[Exception500] ItemServiceImpl findOne", e);
+            throw new CustomException(ErrorCode.SERVER_ERROR, "[Exception500] ItemServiceImpl findOne : " + e.getMessage());
+        }
+    }
 
     @Override
     public ItemResponseDTO.SampleItemFindAllDTO sampleItemFindAll() {

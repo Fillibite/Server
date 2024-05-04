@@ -50,6 +50,20 @@ public class ItemApiController {
         }
     }
 
+    // 샘플 아이템 조회
+    @GetMapping("/findOne/{itemId}")
+    public ResponseEntity<?> findOne(@PathVariable("itemId") Long itemId) {
+        try {
+            log.info("[CartApiController] findOne");
+            String userEmail = getUserEmail();
+            ItemResponseDTO.ItemFindOneDTO result = itemService.findOne(itemId);
+            return ResponseEntity.ok().body(ApiResponse.SUCCESS(HttpStatus.CREATED.value(), "[SUCCESS] CartApiController findOne", result));
+        }  catch (Exception500 e) {
+            log.info("[Exception500] CartApiController findOne");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ApiResponse.ERROR(e.status().value(), e.getMessage()));
+        }
+    }
+
     private String getUserEmail() {
         User user = authenticationService.getCurrentAuthenticatedUser();
         String userEmail = user.getUserEmail();
