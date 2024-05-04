@@ -12,6 +12,7 @@ public class CartRequestDTO {
     @Setter
     @Getter
     public static class CartSelectOneDTO {
+        private Long id;
         private String itemName;
         private String itemImg;
         private int itemPrice;
