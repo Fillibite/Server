@@ -2,11 +2,9 @@ package com.example.hackathon.domain.item.service;
 
 import com.example.hackathon.domain.item.dto.ItemRequestDTO;
 import com.example.hackathon.domain.item.dto.ItemResponseDTO;
-import com.example.hackathon.domain.item.entity.Package;
-import com.example.hackathon.domain.item.entity.Sample;
+import com.example.hackathon.domain.item.entity.Item;
+import com.example.hackathon.domain.item.entity.Type;
 import com.example.hackathon.domain.item.repository.ItemRepository;
-import com.example.hackathon.domain.item.repository.PackageRepository;
-import com.example.hackathon.domain.item.repository.SampleRepository;
 import com.example.hackathon.global.common.CommonMethod;
 import com.example.hackathon.global.common.exception.CustomException;
 import com.example.hackathon.global.common.reponse.ErrorCode;
@@ -23,8 +21,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Slf4j
 public class ItemServiceImpl implements ItemService {
-    private final PackageRepository packageRepository;
-    private final SampleRepository sampleRepository;
+    private final ItemRepository itemRepository;
     private final CommonMethod commonMethod;
 
     @Override
@@ -32,7 +29,7 @@ public class ItemServiceImpl implements ItemService {
         try {
             log.info("[ItemServiceImpl] sampleItemFindAll");
             // SampleItem을 모두 가져옴
-            List<Sample> sampleItems = sampleRepository.findAll();
+            List<Item> sampleItems = itemRepository.findByItemType(Type.SAMPLE);
             // DTO로 변환
             List<ItemResponseDTO.SampleItemFindOneDTO> sampleItemDTOList = sampleItems.stream()
                     .map(this::mapToSampleItemFindOneDTO)
@@ -52,7 +49,7 @@ public class ItemServiceImpl implements ItemService {
         try {
             log.info("[ItemServiceImpl] packageItemFindAll");
             // PackageItem을 모두 가져옴
-            List<Package> packageItems = packageRepository.findAll();
+            List<Item> packageItems = itemRepository.findByItemType(Type.PACKAGE);
             // DTO로 변환
             List<ItemResponseDTO.PackageItemFindOneDTO> packageItemDTOList = packageItems.stream()
                     .map(this::mapToPackageItemFindOneDTO)
@@ -90,7 +87,7 @@ public class ItemServiceImpl implements ItemService {
 
 
     // SampleItem을 DTO로 매핑하는 메서드
-    private ItemResponseDTO.SampleItemFindOneDTO mapToSampleItemFindOneDTO(Sample sampleItem) {
+    private ItemResponseDTO.SampleItemFindOneDTO mapToSampleItemFindOneDTO(Item sampleItem) {
         ItemResponseDTO.SampleItemFindOneDTO dto = new ItemResponseDTO.SampleItemFindOneDTO();
         dto.setId(sampleItem.getId());
         dto.setItemName(sampleItem.getItemName());
@@ -103,7 +100,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     // PackageItem을 DTO로 매핑하는 메서드
-    private ItemResponseDTO.PackageItemFindOneDTO mapToPackageItemFindOneDTO(Package packageItem) {
+    private ItemResponseDTO.PackageItemFindOneDTO mapToPackageItemFindOneDTO(Item packageItem) {
         ItemResponseDTO.PackageItemFindOneDTO dto = new ItemResponseDTO.PackageItemFindOneDTO();
         dto.setId(packageItem.getId());
         dto.setItemName(packageItem.getItemName());

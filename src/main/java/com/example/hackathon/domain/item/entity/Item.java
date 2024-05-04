@@ -17,4 +17,7 @@ public class Item {
     private float itemStar = 0;
     private int itemReviewCount = 0;
     private String itemImg = "img";
+    @Enumerated(EnumType.STRING)
+    private Type itemType;
 }
+
