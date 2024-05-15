@@ -10,6 +10,9 @@ import com.example.hackathon.global.common.exception.CustomException;
 import com.example.hackathon.global.common.reponse.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -135,6 +138,43 @@ public class ItemServiceImpl implements ItemService {
             throw new CustomException(ErrorCode.SERVER_ERROR, "[Exception500] ItemServiceImpl searchKeyWord : " + e.getMessage());
         }
     }
+
+//    @Override
+//    public ItemResponseDTO.Top3FindAllDTO top3FindAll() {
+//        try {
+//            log.info("[ItemServiceImpl] top3FindAll");
+//            Pageable pageable = PageRequest.of(0, 3); // 페이지 번호는 0부터 시작하고, 크기는 3
+//            Page<Item> top3Items = itemRepository.findAllByOrderByItemReviewCountDesc(pageable);
+//            List<ItemResponseDTO.ItemFindOneDTO> top3ItemList = top3Items.getContent().stream()
+//                    .map(ItemResponseDTO.ItemFindOneDTO::new)
+//                    .collect(Collectors.toList());
+//            return new ItemResponseDTO.Top3FindAllDTO(top3ItemList);
+//        } catch (CustomException ce) {
+//            log.info("[CustomException] ItemServiceImpl top3FindAll");
+//            throw ce;
+//        } catch (Exception e) {
+//            log.info("[Exception500] ItemServiceImpl top3FindAll");
+//            throw new CustomException(ErrorCode.SERVER_ERROR, "[Exception500] ItemServiceImpl top3FindAll : " + e.getMessage());
+//        }
+//    }
+//    @Override
+//    public ItemResponseDTO.RecentlyFindAllDTO recentlyFindAll() {
+//        try {
+//            log.info("[ItemServiceImpl] recentlyFindAll");
+//            Pageable pageable = PageRequest.of(0, 3); // 페이지 번호는 0부터 시작하고, 크기는 3
+//            Page<Item> recentlyItems = itemRepository.findAllByOrderByCreatedTimeDesc(pageable);
+//            List<ItemResponseDTO.ItemFindOneDTO> recentlyItemList = recentlyItems.getContent().stream()
+//                    .map(ItemResponseDTO.ItemFindOneDTO::new)
+//                    .collect(Collectors.toList());
+//            return new ItemResponseDTO.RecentlyFindAllDTO(recentlyItemList);
+//        } catch (CustomException ce) {
+//            log.info("[CustomException] ItemServiceImpl recentlyFindAll");
+//            throw ce;
+//        } catch (Exception e) {
+//            log.info("[Exception500] ItemServiceImpl recentlyFindAll");
+//            throw new CustomException(ErrorCode.SERVER_ERROR, "[Exception500] ItemServiceImpl recentlyFindAll : " + e.getMessage());
+//        }
+//    }
 
     // SampleItem을 DTO로 매핑하는 메서드
     private ItemResponseDTO.SampleItemFindOneDTO mapToSampleItemFindOneDTO(Item sampleItem) {

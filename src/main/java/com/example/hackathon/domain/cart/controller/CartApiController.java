@@ -3,7 +3,6 @@ package com.example.hackathon.domain.cart.controller;
 import com.example.hackathon.domain.cart.dto.CartRequestDTO;
 import com.example.hackathon.domain.cart.dto.CartResponseDTO;
 import com.example.hackathon.domain.cart.service.CartServiceImpl;
-import com.example.hackathon.domain.item.dto.ItemResponseDTO;
 import com.example.hackathon.domain.user.entity.User;
 import com.example.hackathon.global.auth.service.AuthenticationService;
 import com.example.hackathon.global.common.exception.Exception500;

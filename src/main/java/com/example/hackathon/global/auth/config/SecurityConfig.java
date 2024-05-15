@@ -4,9 +4,6 @@ import com.example.hackathon.domain.token.service.TokenServiceImpl;
 import com.example.hackathon.domain.user.repository.UserRepository;
 import com.example.hackathon.global.auth.jwt.filter.JwtAuthenticationFilter;
 import com.example.hackathon.global.auth.jwt.filter.JwtAuthorizationFilter;
-import com.example.hackathon.global.auth.oauth2.PrincipalOauth2UserService;
-import com.example.hackathon.global.auth.oauth2.handler.Oauth2LoginFailureHandler;
-import com.example.hackathon.global.auth.oauth2.handler.Oauth2LoginSuccessHandler;
 import com.example.hackathon.global.common.config.CorsConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,10 +29,6 @@ public class SecurityConfig {
     @Value(("${jwt.secret}"))
     private String secretKey;
 
-    /** Oauth2 로그인 구현 **/
-    private final PrincipalOauth2UserService principalOauth2UserService;
-    private final Oauth2LoginSuccessHandler oauth2LoginSuccessHandler;
-    private final Oauth2LoginFailureHandler oauth2LoginFailureHandler;
     private final LogoutSuccessHandler logoutSuccessHandler;
 
     @Bean
@@ -77,14 +70,6 @@ public class SecurityConfig {
                                 .access("hasRole('ROLE_ADMIN')")
 //                        .anyRequest().permitAll()
                 )
-
-//                /** Oauth2 로그인 구현 **/
-//                .oauth2Login(login -> login
-//                        .successHandler(oauth2LoginSuccessHandler)
-//                        .failureHandler(oauth2LoginFailureHandler)
-//                        .userInfoEndpoint(userInfoEndpointConfig -> userInfoEndpointConfig
-//                                .userService(principalOauth2UserService))
-//                )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessHandler(logoutSuccessHandler)

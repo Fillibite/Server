@@ -58,16 +58,6 @@ public class ItemResponseDTO {
 
     @Setter
     @Getter
-    public static class PackageItemTop3FindAllDTO {
-        private List<ItemResponseDTO.PackageItemFindOneDTO> packageList;
-    }
-    @Setter
-    @Getter
-    public static class SampleItemTop3FindAllDTO {
-        private List<ItemResponseDTO.SampleItemFindOneDTO> sampleList;
-    }
-    @Setter
-    @Getter
     public static class SampleItemSelectAllDTO {
         private List<ItemRequestDTO.SampleItemSelectOneDTO> sampleList;
     }
@@ -101,4 +91,23 @@ public class ItemResponseDTO {
     public static class ItemSearch {
         private List<ItemResponseDTO.ItemFindOneDTO> searchList;
     }
+
+//    @Setter
+//    @Getter
+//    public static class Top3FindAllDTO {
+//        private List<ItemResponseDTO.ItemFindOneDTO> top3List;
+//
+//        public Top3FindAllDTO(List<ItemFindOneDTO> top3ItemList) {
+//            this.top3List = top3ItemList;
+//        }
+//    }
+//    @Setter
+//    @Getter
+//    public static class RecentlyFindAllDTO {
+//        private List<ItemResponseDTO.ItemFindOneDTO> recentlyList;
+//
+//        public RecentlyFindAllDTO(List<ItemFindOneDTO> recentlyItemList) {
+//            this.recentlyList = recentlyItemList;
+//        }
+//    }
 }
